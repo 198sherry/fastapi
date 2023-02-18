@@ -1,0 +1,23 @@
+SELECT * from products WHERE name LIKE 'TV%'
+SELECT * from products WHERE name NOT LIKE '%e'
+SELECT * from products WHERE name NOT LIKE '%e' ORDER BY price ASC;
+SELECT * from products WHERE name NOT LIKE '%e' ORDER BY price ASC, inventory DESC;
+SELECT * from products WHERE price > 10 LIMIT 5;
+SELECT * from products WHERE price > 10 LIMIT 5 OFFSET 2;
+INSERT INTO products (name, price, inventory) VALUES ('tortilla', 4, 1000);
+INSERT INTO products (name, price, inventory) VALUES ('car seat', 300, 100), ('monitor', 3000, 400), ('car brake', 30, 500)returning *;
+DELETE FROM products WHERE id = 1 RETURNING *;
+UPDATE products SET name='flour tortilla', price = 40 WHERE id = 5 RETURNING *;
+
+
+select * from posts left join users on posts.owner_id = users.id
+select posts.*, email, content, email from posts left join users on posts.owner_id = users.id
+select users.id, count(*) from posts left join users on posts.owner_id = users.id group by users.id
+
+select users.id, count(posts.id) from posts right join users on posts.owner_id = users.id group by users.id
+
+select users.id, email, count(posts.id) from posts right join users on posts.owner_id = users.id group by users.id
+
+select users.id, email, count(posts.id) from posts right join users on posts.owner_id = users.id group by users.id
+
+select posts.*, count(votes.post_id) from posts left join votes on posts.id = votes.post_id where posts.id = 10 group by posts.id 
