@@ -1,0 +1,71 @@
+
+
+*. python3 --version
+
+- Deployment to heroku:
+  *. git add --all                    #push changes to git   
+  *. git commit -m "description of changes"
+  *. git push origin_project_name_in_git(ex. origin) application_name(ex. main)
+  *. git push heroku application_name (ex. main)
+  *. heroku apps:info
+  *. heroku ps:restart
+  *. heroku run "alembic upgrade head" #for database changes  
+
+
+-. Deployment to Ubuntu:
+  *. sign up an account at digitocean.com
+  *. create a droplet
+  *. ssh root@droplet_url #connect to the virtual machine
+  *. sudo apt update && sudo apt upgrade -y  #install 3rd party packages
+  *. sudo apt install python3-pip
+  *. sudo pip3 install virtualenv
+  *. sudo apt install postgresql postgresql-contrib -y
+  *. psql --version
+  *. sudo cat /etc/passwd
+  *. su - postgres  #change user?
+  *. \password postgres #change password
+  *. \q #logout the current user
+  *. exit #log out the virtual machine?
+  *. sudo vi filename #open vi editor
+  *. esc to exit vi editor, to save changes, then :wq and press Enter, 
+                            to abandon changes, then :q! and press Enter,
+                            if no change made, then :q and press Enter
+  *. systemctl restart #restart the system
+  *. adduser username
+  *. usermod -aG sudo fastapi
+  *. cd ~ #go to home directory
+  *. mkdir app #create app directory
+  *. virtualenv app #create a virtual environment
+  *. source venv/bin/activate #activate the virtual environment
+  *. deactivate #to deactivate
+  
+  *. git clone https://github.com/198sherry/fastapi.git .
+  *. pip install -r requirements.txt #install 3rd package
+  *. uvicorn main:app #start the application
+  *. set -o allexport; source .env; set +o allexport
+  *. sudo reboot
+  *. uvicorn --host 0.0.0.0 app.main:app #allow connection to any web request
+  *. pip install gunicorn
+  *. gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000
+  *. ps -aef | grep -i gunicorn #
+  *. systemctl start api
+  *. systemctl status api
+  *. sudo systemctl enable api #enable the service after the reboot automatically
+  *. sudo apt install nginx -y
+  *. systemctl start nginx
+  *. cd /etc/nginx/sites-available
+  
+  
+  firewall:
+  *. sudo ufw status
+  *. sudo ufw allow https
+  *. sudo ufw allow ssh
+  *. sudo ufw enable
+  *. sudo ufw allow 5432 #access to database
+  *. sudo ufw delete allow http
+  
+  
+  Test:
+  *. pip install pytest
+  *. pytest -v -s #verbose and print
+  

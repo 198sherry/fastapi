@@ -5,9 +5,9 @@ from .config import settings
 from psycopg2.extras import RealDictCursor
 
 
-#SQLALCHEMY_DATABASE_URL ='postgresql://postgres:w1i6f8@localhost/fastapi'#<username>:<password>@<ip-address/hostname>/<database_name>'
+SQLALCHEMY_DATABASE_URL ='postgresql://postgres:w1i6f8@localhost/fastapi'#<username>:<password>@<ip-address/hostname>/<database_name>'
 #print(f"username: {settings.database_username}, pwd:{settings.database_password}, hostname: {settings.database_hostname}, name: {settings.database_name}")
-SQLALCHEMY_DATABASE_URL =f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}"
+#SQLALCHEMY_DATABASE_URL =f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}"
 #<username>:<password>@<ip-address/hostname>/<database_name>'
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
