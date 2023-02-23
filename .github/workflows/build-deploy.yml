@@ -8,7 +8,6 @@ jobs:
       name: testing
     env:
       DATABASE_HOSTNAME: localhost
-      DATABASE_PORT: 5432
       DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
       DATABASE_NAME: fastapi
       DATABASE_USERNAME: postgres
